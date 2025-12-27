@@ -37,11 +37,14 @@
 </head>
 <body>
     <h1>Ma liste de tâches</h1>
+    <p id="counter">Tâches : 0</p>
     <input type="text" id="taskInput" placeholder="Nouvelle tâche...">
     <button onclick="addTask()">Ajouter</button>
     <ul id="taskList"></ul>
 
     <script>
+      let taskCount = 0;
+
         function addTask() {
             const input = document.getElementById('taskInput');
             const task = input.value;
@@ -52,11 +55,19 @@
                 li.onclick = function() {
                     if (confirm('Supprimer cette tâche ?')) {
                         li.remove();
+                        taskCount--;
+                        updateCounter();
                     }
                 };
                 document.getElementById('taskList').appendChild(li);
                 input.value = '';
+                taskCount++;
+                updateCounter();
             }
+        }
+
+        function updateCounter() {
+            document.getElementById('counter').textContent = 'Tâches : ' + taskCount;
         }
     </script>
 </body>
