@@ -42,12 +42,18 @@
     <ul id="taskList"></ul>
 
     <script>
-        function addTask() {
+                function addTask() {
             const input = document.getElementById('taskInput');
             const task = input.value;
             if (task) {
                 const li = document.createElement('li');
                 li.textContent = task;
+                li.style.cursor = 'pointer';
+                li.onclick = function() {
+                    if (confirm('Supprimer cette tâche ?')) {
+                        li.remove();
+                    }
+                };
                 document.getElementById('taskList').appendChild(li);
                 input.value = '';
             }
