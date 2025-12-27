@@ -38,10 +38,11 @@
 <body>
     <h1>Ma liste de tâches</h1>
     <input type="text" id="taskInput" placeholder="Nouvelle tâche...">
+    <button onclick="addTask()">Ajouter</button>
     <ul id="taskList"></ul>
 
     <script>
-                function addTask() {
+        function addTask() {
             const input = document.getElementById('taskInput');
             const task = input.value;
             if (task) {
